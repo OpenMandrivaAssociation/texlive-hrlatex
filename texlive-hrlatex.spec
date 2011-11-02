@@ -1,0 +1,64 @@
+Name:		texlive-hrlatex
+Version:	0.23
+Release:	1
+Summary:	LaTeX support for Croatian documents
+Group:		Publishing
+URL:		http://www.ctan.org/tex-archive/language/croatian/hrlatex
+License:	LPPL
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.doc.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.source.tar.xz
+BuildArch:	noarch
+BuildRequires:	texlive-tlpkg
+Requires(post):	texlive-tlpkg
+Conflicts:	texlive-texmf <= 20110705-3
+Conflicts:	texlive-doc <= 20110705-3
+Conflicts:	texlive-source <= 20110705-3
+
+%description
+This package simplifies creation of new documents for the
+(average) Croatian user. As an example, a class file hrdipl.cls
+(designed for the graduation thesis at the University of
+Zagreb) and sample thesis documents are included.
+
+%pre
+    %_texmf_mktexlsr_pre
+
+%post
+    %_texmf_mktexlsr_post
+
+%preun
+    if [ $1 -eq 0 ]; then
+	%_texmf_mktexlsr_pre
+    fi
+
+%postun
+    if [ $1 -eq 0 ]; then
+	%_texmf_mktexlsr_post
+    fi
+
+#-----------------------------------------------------------------------
+%files
+%{_texmfdistdir}/tex/latex/hrlatex/fsbispit.cls
+%{_texmfdistdir}/tex/latex/hrlatex/fsbmath.sty
+%{_texmfdistdir}/tex/latex/hrlatex/hrlatex.sty
+%doc %{_texmfdistdir}/doc/latex/hrlatex/README
+%doc %{_texmfdistdir}/doc/latex/hrlatex/hrlatex.pdf
+%doc %{_texmfdistdir}/doc/latex/hrlatex/sample.fsbispit.tex
+%doc %{_texmfdistdir}/doc/latex/hrlatex/sample.minimal.cp1250.tex
+%doc %{_texmfdistdir}/doc/latex/hrlatex/sample.minimal.latin2.tex
+%doc %{_texmfdistdir}/doc/latex/hrlatex/sample.minimal.utf8.tex
+%doc %{_texmfdistdir}/doc/latex/hrlatex/sample.prezentacija.tex
+#- source
+%doc %{_texmfdistdir}/source/latex/hrlatex/hrlatex.dtx
+%doc %{_texmfdistdir}/source/latex/hrlatex/hrlatex.ins
+
+#-----------------------------------------------------------------------
+%prep
+%setup -c -a0 -a1 -a2
+
+%build
+
+%install
+mkdir -p %{buildroot}%{_texmfdistdir}
+cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
