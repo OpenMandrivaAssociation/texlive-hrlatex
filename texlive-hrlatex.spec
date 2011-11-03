@@ -1,3 +1,9 @@
+# revision 18020
+# category Package
+# catalog-ctan /language/croatian/hrlatex
+# catalog-date 2010-04-25 22:49:50 +0200
+# catalog-license lppl
+# catalog-version 0.23
 Name:		texlive-hrlatex
 Version:	0.23
 Release:	1
@@ -52,6 +58,7 @@ Zagreb) and sample thesis documents are included.
 #- source
 %doc %{_texmfdistdir}/source/latex/hrlatex/hrlatex.dtx
 %doc %{_texmfdistdir}/source/latex/hrlatex/hrlatex.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -62,3 +69,5 @@ Zagreb) and sample thesis documents are included.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
