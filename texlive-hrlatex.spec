@@ -58,3 +58,17 @@ Zagreb) and sample thesis documents are included.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+
+
+%changelog
+* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.23-2
++ Revision: 752586
+- Rebuild to reduce used resources
+
+* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.23-1
++ Revision: 718624
+- texlive-hrlatex
+- texlive-hrlatex
+- texlive-hrlatex
+- texlive-hrlatex
+
