@@ -1,19 +1,13 @@
-# revision 18020
-# category Package
-# catalog-ctan /language/croatian/hrlatex
-# catalog-date 2010-04-25 22:49:50 +0200
-# catalog-license lppl
-# catalog-version 0.23
 Name:		texlive-hrlatex
-Version:	0.23
-Release:	11
+Version:	18020
+Release:	1
 Summary:	LaTeX support for Croatian documents
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/croatian/hrlatex
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hrlatex.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -26,12 +20,12 @@ This package simplifies creation of new documents for the
 Zagreb) and sample thesis documents are included.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -51,24 +45,11 @@ Zagreb) and sample thesis documents are included.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.23-2
-+ Revision: 752586
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.23-1
-+ Revision: 718624
-- texlive-hrlatex
-- texlive-hrlatex
-- texlive-hrlatex
-- texlive-hrlatex
-
