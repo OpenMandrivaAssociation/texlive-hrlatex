@@ -1,6 +1,6 @@
 Name:		texlive-hrlatex
 Version:	18020
-Release:	1
+Release:	2
 Summary:	LaTeX support for Croatian documents
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/croatian/hrlatex
